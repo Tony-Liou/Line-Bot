@@ -1,11 +1,3 @@
----
-title: Line Bot (Messaging API) + Google App Script 
-description: Introducing how a Line bot sends and receives messages with Google App Script.
-image: https://static.line-scdn.net/biz-app/edge/manager/img/common/favicon.ico
-lang: zh
-tags: Line, Bot, Messaging API, Google App Script, Log
----
-
 # Line Bot
 
 本篇主要介紹藉由Line Developers中提供的Messaging API達成能夠收發訊息的Line Bot。
@@ -86,11 +78,9 @@ Bot的伺服器端則由Google App Script來擔此重任。
    可以先按下Verify試試看一切是否正常
 7. 最後進入Line bot的聊天室，傳訊息給他，如果它也回傳一模一樣的文字就代表成功囉~
 
-:::warning
-[Google App Script參考文件](https://developers.google.com/apps-script/guides/web)
-[Line Messaging API參考文件](https://developers.line.biz/en/reference/messaging-api/#messages)
-可參考以上文件進行修改
-:::
+> [Google App Script參考文件](https://developers.google.com/apps-script/guides/web)
+> [Line Messaging API參考文件](https://developers.line.biz/en/reference/messaging-api/#messages)
+> 可參考以上文件進行修改
 
 ## 17 Live API
 
@@ -101,7 +91,7 @@ Bot的伺服器端則由Google App Script來擔此重任。
 - API URL: `https://api-dsa.17app.co/api/v1/liveStreams/getLiveStreamInfo`
 - Contnet-Type: `application/json`
 - JSON Payload:
-   ```JSON
+   ```json
    {"liveStreamID": "7266278"}
    ```
 
@@ -123,7 +113,7 @@ If not, it will be 0.
   | Via               | 1.1 google                       |
   | Alt-Svc           | clear                            |
 - Body
-  ```JSON
+  ```json
   {
     "key": "",
     "data": "{\"userID\":\"d3e7118a-85cc-410b-9de4-279974df458f\",\"streamerType\":0,\"status\":0,\"caption\":\"\",\"restreamOpenID\":\"\",\"allowCallin\":0,\"closeBy\":\"normalEnd\",\"reason\":\"\",\"restreamerOpenID\":\"\",\"streamType\":\"\",\"liveStreamID\":7266278,\"streamID\":\"7266278\",\"endTime\":0,\"beginTime\":0,\"publishSec\":0,\"receivedLikeCount\":0,\"duration\":0,\"viewerCount\":0,\"totalViewTime\":0,\"liveViewerCount\":0,\"audioOnly\":0,\"locationName\":\"\",\"coverPhoto\":\"\",\"latitude\":0,\"longitude\":0,\"shareLocation\":0,\"followerOnlyChat\":0,\"chatAvailable\":0,\"replayCount\":0,\"replayAvailable\":0,\"numberOfChunks\":0,\"canSendGift\":0,\"userInfo\":{\"pushLiveStream\":1,\"userID\":\"d3e7118a-85cc-410b-9de4-279974df458f\",\"openID\":\"醬醬兒__\",\"displayName\":\"醬醬兒__\",\"name\":\"\",\"bio\":\"四月開播時間\\n週一～週四晚上8:00～10:00❤️\",\"picture\":\"B6F18965-56FF-4A94-8C03-972AA8F64F53.jpg\",\"website\":\"\",\"followerCount\":23,\"followingCount\":1,\"receivedLikeCount\":0,\"likeCount\":0,\"isFollowing\":0,\"isBlocked\":0,\"isAdmin\":0,\"isRemoved\":0,\"isVerified\":0,\"isFreezed\":0,\"isBanned\":0,\"unLockUser\":0,\"followTime\":0,\"blockTime\":0,\"followRequestTime\":0,\"roomID\":7266278,\"privacyMode\":\"open\",\"ballerLevel\":0,\"postCount\":0,\"lastLogin\":1583298820,\"coverPhoto\":\"\",\"age\":20,\"gender\":\"female\",\"pushLike\":\"\",\"pushPost\":0,\"pushFollow\":0,\"pushComment\":\"\",\"pushTag\":\"\",\"pushSystemNotif\":0,\"totalGiftRevenueEarned\":-1e-45,\"isOpenIDChangable\":false,\"deviceModel\":\"12.3.1 - Unknown iPhone\",\"isCelebrity\":0,\"isChoice\":0,\"isInternational\":0,\"adsOn\":0,\"subscribeExpireTime\":0,\"baller\":0,\"enterAnimation\":0,\"level\":3,\"giftModuleState\":1,\"experience\":190,\"version\":\"3.91.3\",\"deviceType\":\"IOS\",\"followPrivacyMode\":0,\"revenueShareIndicator\":\"\",\"clanStatus\":0,\"createClanID\":\"\",\"clanInfo\":{\"joinCount\":0},\"chatMuteDuration\":0,\"language\":\"TW\",\"livePass\":0,\"experienceToNext\":210,\"newbieThreshold\":30,\"newbieIapCheapPromotion\":0,\"region\":\"TW\",\"registerRegion\":\"TW\",\"registerTime\":1583298820,\"paypalVerifyState\":0,\"pkWinRate\":-1e-45,\"enterNotifState\":1,\"enterAnimationState\":1,\"hideAllPointToLeaderboard\":2,\"unreadTerm\":\"\",\"monthlyVIPBadges\":{},\"vipGroupType\":0,\"sportsCarAccumulatedPoint\":0,\"sportsCarThresholdTip\":0,\"lastActiveTime\":1585502180,\"maxStreamDuration\":0,\"lastLiveTimestamp\":0,\"mithHasAgreed\":false,\"mithEmailVerifyState\":0,\"mithSmsVerifyState\":0,\"mithServiceOpen\":false,\"invisibleInfo\":{\"enable\":false,\"startTime\":0,\"endTime\":0},\"hasCommodity\":false,\"stealthLeaderboardInfo\":{\"enable\":false,\"startTime\":0,\"endTime\":0},\"buyMarqueeCommentInfo\":{\"enable\":false,\"startTime\":0,\"endTime\":0},\"streamerRecapEnable\":true,\"followReminder\":1,\"gloryroadMode\":0,\"leagueInfo\":{\"shouldShowEntrance\":false},\"hasVipPurchase\":false,\"deviceID\":\"466b562c88f1490b825218fdae6759e2\",\"ageVerificationStatus\":0,\"ageVerificationLastUpdatedTimestamp\":0,\"referralCode\":\"\",\"isNewbieHintPopped\":1,\"newbieDisplayAllGiftTabsToast\":false,\"disableMakeLiveHotToast\":false},\"canSendGiftWithTextAndVoice\":0,\"videoCodec\":\"\",\"hiddenFromTimeline\":0,\"privateLiveStream\":0,\"landscape\":false,\"mute\":false,\"birthdayState\":0,\"dayBeforeBirthday\":0,\"hotLiveStatus\":0,\"achievementValue\":0,\"position\":0,\"topPosition\":0,\"mediaMessageReadState\":0,\"region\":\"\",\"specialTag\":0,\"hashtag\":\"\",\"internalInfo\":\"\",\"guardianUserID\":\"\",\"guardianPicture\":\"\",\"campaignIcon\":\"\",\"campaignURL\":\"\",\"campaignEndTime\":0,\"campaignShowTimer\":0,\"campaignSize\":0,\"campaignTitle\":\"\",\"filterMode\":0,\"revenueUserID\":\"\",\"commodityState\":0,\"commodityInfo\":{\"type\":0,\"price\":0,\"amount\":0,\"desc\":\"\",\"endTimeMS\":0},\"canSellCommodity\":false,\"gridStyle\":0,\"device\":\"\",\"redEnvelopeAvailable\":false,\"armyConfigInfo\":{\"enable\":false},\"deviceInfo\":{\"type\":\"\",\"version\":\"\",\"hardware\":\"\",\"OSVersion\":\"\",\"Customization\":\"\",\"publicIP\":\"\",\"packageName\":\"\",\"isViaMobile\":false,\"app\":\"\",\"deviceID\":\"\",\"ipRegion\":\"\"},\"vipFrameURL\":\"\",\"iosFrameURL\":\"\",\"vipFrameID\":\"\",\"subtabDisplayName\":\"\",\"sportsCarAccumulatedPoint\":0,\"sportsCarThresholdTip\":0,\"pmInfo\":{\"enable\":false,\"pmThreshold\":0,\"pmHours\":0,\"totalPoint\":0,\"pmStatus\":0},\"superstarAvailable\":false,\"messageProvider\":0,\"cdnProvider\":0,\"purchaseEventStickerList\":[],\"debugLevel\":0,\"entryTitleType\":0,\"entryIconURL\":\"\",\"verifiedStatus\":0,\"landscapeBarrage\":false,\"tradeID\":\"\",\"defaultGiftTab\":\"\",\"receivedLikeLayout\":0,\"cellTab\":0,\"pkID\":\"\"}"
