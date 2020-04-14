@@ -63,7 +63,7 @@ Bot的伺服器端則由Google App Script來擔此重任。
                "to": GROUP_ID,
                "messages": [{
                    type: "text",
-                   text: msg
+                   text: userMsg
                }]
            }),
        });
