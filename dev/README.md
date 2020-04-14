@@ -10,7 +10,7 @@ Bot的伺服器端則由Google App Script來擔此重任。
 1. 註冊Line Developers帳號，使用你平常在用的一般Line帳號登入即可
 2. 創建一個Provider(之後會顯示此帳號是由誰提供)
 3. 於該Provider的Channels下創立一個Messaging API Channel
-   ![Messaging API Channel](Images/Line Channel.png)
+   ![Messaging API Channel](Images/Line%20Channel.png)
 5. 填寫完相關資料後就完成囉～
 
 ### 設定Channel
@@ -40,7 +40,7 @@ Bot的伺服器端則由Google App Script來擔此重任。
 我們需要能夠處理Line Platform傳送的訊息，因此我們要利用GAS建立一個Web App來接收、處理並發送訊息。
 ![Messaging API Architecture](https://developers.line.biz/assets/img/messaging-api-architecture.f40bffbb.png "architecture")
 
-1. 首先進入雲端硬碟新增GAS專案 ![Create a Google App Script project](Images/Create GAS.png)
+1. 首先進入雲端硬碟新增GAS專案 ![Create a Google App Script project](Images/Create%20GAS.png)
 2. 進入編輯頁面後，有兩個function是Web app需要實作的，一個是`doGet()`，另一個是`doPost()`。顧名思義就是實現HTTP的Request-method：使用者是利用**Get**或是**Post**方法來向我們傳送請求訊息。
    由於Line Platform只會向我們發送Post請求，因此我們可以只實作`doPost()` funciton。
 3. 以下為自製的code，是利用push message的API傳送訊息到指定群組
