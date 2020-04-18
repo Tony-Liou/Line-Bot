@@ -11,7 +11,7 @@ Bot的伺服器端則由Google App Script來擔此重任。
 2. 創建一個Provider(之後會顯示此帳號是由誰提供)
 3. 於該Provider的Channels下創立一個Messaging API Channel
    ![Messaging API Channel](Images/Line%20Channel.png)
-5. 填寫完相關資料後就完成囉～
+4. 填寫完相關資料後就完成囉～
 
 ### 設定Channel
 
@@ -41,46 +41,45 @@ Bot的伺服器端則由Google App Script來擔此重任。
 ![Messaging API Architecture](https://developers.line.biz/assets/img/messaging-api-architecture.f40bffbb.png "architecture")
 
 1. 首先進入雲端硬碟新增GAS專案 ![Create a Google App Script project](Images/Create%20GAS.png)
-2. 進入編輯頁面後，有兩個function是Web app需要實作的，一個是`doGet()`，另一個是`doPost()`。顧名思義就是實現HTTP的Request-method：使用者是利用**Get**或是**Post**方法來向我們傳送請求訊息。
-   由於Line Platform只會向我們發送Post請求，因此我們可以只實作`doPost()` funciton。
-3. 以下為自製的code，是利用push message的API傳送訊息到指定群組
+2. 進入編輯頁面後，有兩個function是Web app需要實作的，一個是`doGet()`，另一個是`doPost()`。顧名思義就是實現HTTP的Request-method：使用者是利用**Get**或是**Post**方法來向我們傳送請求訊息。  
+   由於Line Platform只會向我們發送Post請求，因此我們可以只實作`doPost()` funciton。(但是如果有人以Get方法請求你的App的話，你會在你的錯誤紀錄中看到錯誤警告)
+3. 以下為自製的code，是利用reply message的API傳送訊息到指定群組
    ```Javascript
    const CHANNEL_ACCESS_TOKEN = "Enter your channel access token here";
-   const PUSH_API_URL = "https://api.line.me/v2/bot/message/push";
-   const GROUP_ID = "Ccfc3c76624b68ec16994ed9e9da00d93";
+   const REPLY_API_URL = "https://api.line.me/v2/bot/message/reply";
    
    function doPost(e) {
-       let jsonObj = JSON.parse(e.postData.contents);
-       let userMsg = jsonObj.events[0].message.text;
+       const jsonObj = JSON.parse(e.postData.contents);
+       const userMsg = jsonObj.events[0].message.text;
+	   const token = jsonObj.events[0].replyToken;
 
-       UrlFetchApp.fetch(PUSH_API_URL, {
+       UrlFetchApp.fetch(REPLY_API_URL, {
            "headers": {
-               "Content-Type": "application/json;",
-               "Authorization": "Bearer " + CHANNEL_ACCESS_TOKEN,
-           },
-           "method": "post",
-           "payload": JSON.stringify({
-               "to": GROUP_ID,
-               "messages": [{
-                   type: "text",
-                   text: userMsg
-               }]
-           }),
-       });
+		       "Content-Type": "application/json;",
+		       "Authorization": "Bearer " + CHANNEL_ACCESS_TOKEN,
+		   },
+		   "method": "post",
+		   "payload": JSON.stringify({
+		       "replyToken": token,
+		       "messages": [{
+			       type: "text",
+			       text: userMsg
+		       }]
+		   }),
+	   });
    }
    ```
-   `Channel Access Token`換成一開始設定Line帳號時取得的
-   `Group ID`可以換成特定使用者的ID或是某個群組的ID
-   想要簡單一點可以使用[reply message](https://developers.line.biz/en/reference/messaging-api/#send-reply-message)方法，修改JSON內容(`to`改成`replyToekn`)及API的URL(`push`改成`reply`)就行了
+   `Channel Access Token`換成一開始設定Line帳號時取得的  
+   `replyToekn`則是每次有可以回覆的事件發生時，Line的伺服器傳過來的
 4. 如果以上都修改完成，那麼就可以發布程式了。按下上方**發布**按鈕，選擇**部署為網路應用程式**
 5. 專案版本(Project version)選擇**新增**，誰能存取此應用程式(Who has access to the app)選擇**任何人，甚至是匿名的(Anyone, even anonymous)**，以誰的身分執行此應用程式(Execute the app as)建議選擇自己(me)，如果要選擇**存取此網路應用的使用者**不確定需不需要額外的設定。
-6. 發佈後，會得到一串URL，將這網址放回上面說過的Line帳號設定的Webhook URL欄位按下更新，並開啟**Use Webhook**後就完成啦~
+6. 發佈後，會得到一串URL，將這網址放回上面說過的Line帳號設定的Webhook URL欄位按下更新，並開啟**Use Webhook**後就完成啦~  
    可以先按下Verify試試看一切是否正常
 7. 最後進入Line bot的聊天室，傳訊息給他，如果它也回傳一模一樣的文字就代表成功囉~
 
-> [Google App Script參考文件](https://developers.google.com/apps-script/guides/web)<br>
-> [Line Messaging API參考文件](https://developers.line.biz/en/reference/messaging-api/#messages)<br>
-> 可參考以上文件進行修改
+可以參考以下文件進行修改  
+> [Google App Script參考文件](https://developers.google.com/apps-script/guides/web)  
+> [Line Messaging API參考文件](https://developers.line.biz/en/reference/messaging-api/#messages)
 
 ## 17 Live API
 
